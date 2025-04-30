@@ -1,51 +1,78 @@
+/* 1) SLIDER CONTAINER: rounded + responsive */
 .slider-container {
   position: relative;
   width: 100%;
-  max-width: 1200px; /* Adjust as needed */
+  max-width: 1200px;           /* or bump this up if you want a wider frame */
   margin: 0 auto;
-  overflow: hidden;
-  height: 400px; /* Set a fixed height for the slider */
+  
+  /* instead of a hard height, use aspect-ratio for perfect scaling */
+  aspect-ratio: 16/9;          
+  overflow: hidden;             /* hide anything that spills out */
+  border-radius: 8px;           /* round the entire frame */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* 2) TRACK stays the same */
 .slider-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
 }
 
+/* 3) SLIDE & IMAGE: fill the container exactly */
 .slide {
   flex: 0 0 100%;
   height: 100%;
+  overflow: hidden;            /* clip the image if we choose to zoom it */
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the slide area */
-  border-radius: 8px; /* Optional for rounded corners */
+  object-fit: cover;           /* guarantees full coverage, no stretching */
+  /* remove any per-image radius—our container has the curve now */
+  border-radius: 0;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
+/* optional hover-zoom */
+.slide:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+/* 4) ARROW BUTTONS: positioned inside the frame */
 .slider-buttons {
   position: absolute;
   top: 50%;
   left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
+  pointer-events: none;        /* let only the buttons themselves be clickable */
+  z-index: 2;                  /* ensure they sit above the images */
 }
 
 .prev, .next {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  pointer-events: auto;
+  margin: 0 1rem;              /* pull them in from the very edge */
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
   border: none;
-  padding: 10px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   cursor: pointer;
-  font-size: 18px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .prev:hover, .next:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0,0,0,0.8);
+  transform: scale(1.1);
 }

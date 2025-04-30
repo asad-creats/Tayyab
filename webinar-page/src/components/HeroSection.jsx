@@ -1,120 +1,139 @@
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
 import ImageSlider from './ImageSlider';
 
-function HeroSection() {
-  const navigate = useNavigate(); // Initialize useNavigate
+// === THEME VARIABLES ===
+const colors = {
+  primary: '#007BFF',
+  primaryDark: '#0056b3',
+  bgLight: 'linear-gradient(135deg, #e0f7ff, #b3e5fc)',
+  textDark: '#003366',
+  textGray: '#555',
+  white: '#ffffff',
+};
+
+const breakpoints = {
+  mobile: '768px',
+};
+
+// === ANIMATIONS ===
+const fadeInUp = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
+// === STYLED COMPONENTS ===
+const HeroContainer = styled.section`
+  background: ${colors.bgLight};
+  padding: 6rem 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+`;
+
+const Content = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const TextSection = styled.div`
+  flex: 1;
+  padding-right: 2.5rem;
+  animation: ${fadeInUp} 0.8s ease both;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+  color: ${colors.textDark};
+  margin-bottom: 1.875rem;
+  line-height: 1.2;
+  
+  span {
+    color: ${colors.primary};
+  }
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 2.2rem;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.4rem;
+  color: ${colors.textGray};
+  margin-bottom: 1.875rem;
+  line-height: 1.6;
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.2rem;
+  }
+`;
+
+const CTAButton = styled.button`
+  background-color: ${colors.primary};
+  color: ${colors.white};
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+    
+  &:hover {
+    background-color: ${colors.primaryDark};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const SliderSection = styled.div`
+  flex: 1;
+  margin-left: 1.25rem;
+  animation: ${fadeInUp} 1s ease both;
+  
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 0;
+    width: 100%;
+  }
+`;
+
+// === COMPONENT ===
+export default function HeroSection() {
+  const navigate = useNavigate();
 
   return (
-    <div
-      className="hero-section"
-      style={{
-        background: 'linear-gradient(135deg, #e0f7ff, #b3e5fc)',
-        padding: '80px 20px',
-      }}
-    >
-      <div
-        className="hero-content"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
-        <div
-          className="hero-text"
-          style={{
-            flex: 1,
-            paddingRight: '40px',
-          }}
-        >
-          <h1
-            className="hero-title"
-            style={{
-              fontSize: '3rem',
-              color: '#003366',
-              marginBottom: '30px',
-              lineHeight: 1.2,
-            }}
-          >
-            Find and{' '}
-            <span style={{ color: '#007BFF' }}>Register</span> for{' '}
-            <span style={{ color: '#007BFF' }}>Live Webinars</span>
-          </h1>
-          <p
-            className="hero-subtitle"
-            style={{
-              fontSize: '1.4rem',
-              color: '#555555',
-              marginBottom: '30px',
-              lineHeight: 1.6,
-            }}
-          >
+    <HeroContainer>
+      <Content>
+        <TextSection>
+          <Title>
+            Find and <span>Register</span> for <span>Live Webinars</span>
+          </Title>
+          <Subtitle>
             Discover global real estate investment opportunities from the comfort
             of your home or office.
-          </p>
-          <button
-            className="call-to-action"
-            style={{
-              backgroundColor: '#007BFF',
-              color: 'white',
-              border: 'none',
-              padding: '12px 24px',
-              fontSize: '1.1rem',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s ease',
-            }}
-            onClick={() => navigate('/webinars')} // Navigate to the webinars page
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#007BFF')}
-          >
+          </Subtitle>
+          <CTAButton onClick={() => navigate('/webinars')}>
             Explore Webinars
-          </button>
-        </div>
-        <div
-          className="hero-slider"
-          style={{
-            flex: 1,
-            marginLeft: '20px',
-          }}
-        >
+          </CTAButton>
+        </TextSection>
+        <SliderSection>
           <ImageSlider />
-        </div>
-      </div>
-
-      {/* Basic inline styles for responsiveness (can be improved with more complex logic) */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .hero-content {
-              flex-direction: column;
-              text-align: center;
-            }
-
-            .hero-text {
-              padding-right: 0;
-              margin-bottom: 30px;
-            }
-
-            .hero-slider {
-              margin-left: 0;
-              width: 100%;
-            }
-
-            .hero-title {
-              font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-              font-size: 1.2rem;
-            }
-          }
-        `}
-      </style>
-    </div>
+        </SliderSection>
+      </Content>
+    </HeroContainer>
   );
 }
-
-export default HeroSection;

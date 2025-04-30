@@ -7,7 +7,7 @@ function PopularWebinars({ webinars = [] }) {
   return (
     <div className="popular-webinars-section">
       <div className="container">
-        <h2>Most Popular Webinars</h2>
+        <h2>Our Webinars</h2>
 
         <div className="webinars-grid">
           {webinars.map((webinar) => (
