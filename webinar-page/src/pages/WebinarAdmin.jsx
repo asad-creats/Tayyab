@@ -9,31 +9,47 @@ function WebinarAdmin() {
     title: '',
     city: '',
     country: '',
-    image: '',
     description: '',
+    image: '',
   });
+  const [previewImage, setPreviewImage] = useState(null);
 
   const handleChange = (e) => {
     setNewWebinar({ ...newWebinar, [e.target.name]: e.target.value });
   };
 
-  const addWebinar = () => {
-    const { title, city, country, image, description } = newWebinar;
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-    if (!title || !city || !country || !image || !description) {
-      alert('Please fill in all fields.');
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNewWebinar({ ...newWebinar, image: reader.result }); // base64 string
+      setPreviewImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const addWebinar = () => {
+    const { title, city, country, description, image } = newWebinar;
+
+    if (!title || !city || !country || !description || !image) {
+      alert('Please fill in all fields and upload an image.');
       return;
     }
 
     const newId = webinars.length ? Math.max(...webinars.map(w => w.id)) + 1 : 1;
     setWebinars([...webinars, { id: newId, ...newWebinar }]);
+
+    // Reset form
     setNewWebinar({
       title: '',
       city: '',
       country: '',
-      image: '',
       description: '',
+      image: '',
     });
+    setPreviewImage(null);
   };
 
   const deleteWebinar = (id) => {
@@ -65,12 +81,6 @@ function WebinarAdmin() {
             value={newWebinar.country}
             onChange={handleChange}
           />
-          <input
-            name="image"
-            placeholder="Image URL"
-            value={newWebinar.image}
-            onChange={handleChange}
-          />
           <textarea
             name="description"
             placeholder="Description"
@@ -78,6 +88,16 @@ function WebinarAdmin() {
             onChange={handleChange}
             rows={4}
           />
+
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          {previewImage && (
+            <img
+              src={previewImage}
+              alt="Preview"
+              style={{ maxWidth: '150px', marginTop: '10px', borderRadius: '8px' }}
+            />
+          )}
+
           <button onClick={addWebinar}>Add Webinar</button>
         </div>
 
