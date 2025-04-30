@@ -1,0 +1,107 @@
+.popular-webinars-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .popular-webinars-section h2 {
+    font-size: 2.75rem;
+    margin-bottom: 50px;
+    color: #003366;
+  }
+  
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  .webinars-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .webinar-card {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .webinar-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+  }
+  
+  .image-container {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  
+  .webinar-card:hover .image-container img {
+    transform: scale(1.04);
+  }
+  
+  .register-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 86, 179, 0.75);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+  
+  .card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.25rem;
+    color: #003366;
+    margin: 0;
+  }
+  
+  .city-name {
+    font-size: 0.95rem;
+    color: #777777;
+    margin: 0;
+  }
+  
+  .view-detail {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+  }
+  
+  .view-detail:hover {
+    background-color: #003366;
+  }
+  

@@ -1,26 +1,52 @@
-function SearchSection() {
-    return (
-      <div className="search-section">
-        <div className="search-container">
-          <select>
-            <option value="">Select Country</option>
-            <option value="USA">USA</option>
-            <option value="UAE">UAE</option>
-            <option value="Pakistan">Pakistan</option>
-          </select>
-  
-          <select>
-            <option value="">Select City</option>
-            <option value="New York">New York</option>
-            <option value="Dubai">Dubai</option>
-            <option value="Karachi">Karachi</option>
-          </select>
-  
-          <button>Search Webinars</button>
-        </div>
+import React, { useState } from 'react';
+
+function SearchSection({ onSearch }) {
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+
+  const countries = {
+    USA: ['New York', 'Los Angeles'],
+    UAE: ['Dubai', 'Abu Dhabi'],
+    Pakistan: ['Karachi', 'Lahore'],
+  };
+
+  const handleCountryChange = (e) => {
+    setSelectedCountry(e.target.value);
+    setSelectedCity('');
+  };
+
+  const handleCityChange = (e) => {
+    setSelectedCity(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (typeof onSearch === 'function') {
+      onSearch(selectedCountry, selectedCity);
+    }
+  };
+
+  return (
+    <div className="search-section">
+      <div className="search-container">
+        <select value={selectedCountry} onChange={handleCountryChange}>
+          <option value="">Select Country</option>
+          {Object.keys(countries).map((country) => (
+            <option key={country} value={country}>{country}</option>
+          ))}
+        </select>
+
+        <select value={selectedCity} onChange={handleCityChange} disabled={!selectedCountry}>
+          <option value="">Select City</option>
+          {selectedCountry &&
+            countries[selectedCountry].map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+        </select>
+
+        <button onClick={handleSearch}>Search Webinars</button>
       </div>
-    );
-  }
-  
-  export default SearchSection;
-  
+    </div>
+  );
+}
+
+export default SearchSection;

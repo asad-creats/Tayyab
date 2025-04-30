@@ -1,0 +1,88 @@
+.admin-page {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    font-family: sans-serif;
+  }
+  
+  .admin-page h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .webinar-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .webinar-form input {
+    flex: 1 1 45%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .webinar-form button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .webinar-form button:hover {
+    background-color: #003366;
+  }
+  
+  .webinar-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .webinar-item {
+    background: #f9f9f9;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .webinar-item strong {
+    color: #003366;
+  }
+  
+  .webinar-item button {
+    background-color: #ff3b3b;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .webinar-item button:hover {
+    background-color: #cc0000;
+  }
+  .webinar-form textarea {
+    flex: 1 1 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+  
+  

@@ -1,106 +1,94 @@
-/* Sticky Navbar touching the ceiling */
 .navbar {
-    position: fixed;
-    top: 0; /* TOUCH ceiling! */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1000;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* soft shadow */
-    transition: height 0.3s ease; /* Smooth height transition */
-    height: 80px; /* Default height */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease;
+  height: 80px;
 }
 
 .navbar.scrolled {
-    height: 60px; /* Shrink height when scrolled */
+  height: 60px;
 }
 
-/* Inner Navbar Box */
 .navbar-inner {
-    width: 90%; /* Leaves a little gap left and right */
-    max-width: 1400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%; /* Ensure content adjusts to navbar height */
-    padding: 10px 0; /* no extra side padding */
+  width: 90%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
-/* Logo Area */
 .navbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navbar-logo svg {
-    width: 30px;
-    height: 30px;
-    transition: width 0.3s ease, height 0.3s ease; /* Smooth logo size transition */
-}
-
-.navbar.scrolled .navbar-logo svg {
-    width: 25px;
-    height: 25px; /* Shrink logo size when scrolled */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
 .navbar-logo h1 {
-    font-size: 1.5rem;
-    color: #003366;
-    font-weight: 700;
-    transition: font-size 0.3s ease; /* Smooth font size transition */
+  font-size: 1.5rem;
+  color: #003366;
+  font-weight: 700;
+  transition: font-size 0.3s ease;
 }
 
 .navbar.scrolled .navbar-logo h1 {
-    font-size: 1.2rem; /* Shrink font size when scrolled */
+  font-size: 1.2rem;
 }
 
-/* Right Side */
 .navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #0056b3;
+}
+
+.navbar-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #0056b3;
+  border-radius: 2px;
 }
 
 .login-btn {
-    background-color: #ff3b3b;
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  background-color: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .login-btn:hover {
-    background-color: #cc0000;
-}
-
-.logout-btn {
-    background-color: #ff3b3b;
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.logout-btn:hover {
-    background-color: #cc0000;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.user-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #003366;
+  background-color: #cc0000;
 }

@@ -1,61 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function PopularWebinars() {
+function PopularWebinars({ webinars = [] }) {
+  const navigate = useNavigate();
+
   return (
     <div className="popular-webinars-section">
-      <div className="container">{/* New container wrapper */}
-
+      <div className="container">
         <h2>Most Popular Webinars</h2>
 
         <div className="webinars-grid">
-          {/* Card 1 */}
-          <div className="webinar-card">
-            <div className="image-container">
-              <img
-                src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
-                alt="Webinar 1"
-              />
-              <div className="register-tag">Webinar: Register Now</div>
+          {webinars.map((webinar) => (
+            <div className="webinar-card" key={webinar.id}>
+              <div
+                className="image-container"
+                onClick={() => navigate(`/webinar/${webinar.id}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <img src={webinar.image} alt={webinar.title} />
+                <div className="register-tag">Webinar: Register Now</div>
+              </div>
+              <div className="card-content">
+                <button className="view-detail" onClick={() => navigate(`/webinar/${webinar.id}`)}>
+                  View Detail
+                </button>
+                <h3>{webinar.title}</h3>
+                <p className="city-name">{webinar.city}</p>
+              </div>
             </div>
-            <div className="card-content">
-              <button className="view-detail">View Detail</button>
-              <h3>DUBAI - Real Estate Agents Training</h3>
-              <p className="city-name">Dubai</p>
-            </div>
-          </div>
+          ))}
 
-          {/* Card 2 */}
-          <div className="webinar-card">
-            <div className="image-container">
-              <img
-                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
-                alt="Webinar 2"
-              />
-              <div className="register-tag">Webinar: Register Now</div>
-            </div>
-            <div className="card-content">
-              <button className="view-detail">View Detail</button>
-              <h3>Verdana Dubai Investment Park</h3>
-              <p className="city-name">Dubai Investment Park</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="webinar-card">
-            <div className="image-container">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
-                alt="Webinar 3"
-              />
-              <div className="register-tag">Webinar: Register Now</div>
-            </div>
-            <div className="card-content">
-              <button className="view-detail">View Detail</button>
-              <h3>BT Properties - Bahria Town Dubai</h3>
-              <p className="city-name">Dubai South</p>
-            </div>
-          </div>
-
+          {webinars.length === 0 && (
+            <p style={{ marginTop: '2rem', color: '#888' }}>No webinars found for your search.</p>
+          )}
         </div>
       </div>
     </div>
