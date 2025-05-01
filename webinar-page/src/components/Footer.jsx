@@ -9,13 +9,17 @@ function Footer() {
         <div className="footer-column">
           <h3>Get In Touch</h3>
           <ul>
-            <li><span>📍</span> 471 Old Walnut Cir, Gurnee, IL 60031, United States</li>
-            <li><span>📞</span> WhatsApp: +1 847-323-4703, +1 407-946-4000</li>
-            <li><span>📧</span> support@insidewebinar.com</li>
+            <li><span>📍</span> Plaza No 3, Block B1 Ext, B-17 Islamabad, Pakistan</li>
+            <li><span>📞</span> +92 348 111 5505</li>
+            <li><span>📧</span> info@cloudservices.com.pk</li>
           </ul>
           <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-youtube"></i>
+            </a>
           </div>
         </div>
 
@@ -25,27 +29,29 @@ function Footer() {
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">My Webinars</a></li>
-            <li><a href="#">Login/Signin</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">News & Media</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
 
-        {/* Column 3: More Links */}
+        {/* Column 3: Company Values */}
         <div className="footer-column">
-          <h3>More Links</h3>
+          <h3>Core Values</h3>
           <ul>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Partner Agents</a></li>
+            <li>Integrity</li>
+            <li>Innovation</li>
+            <li>Customer-Centricity</li>
+            <li>Sustainability</li>
+            <li>Excellence</li>
           </ul>
         </div>
 
-        {/* Column 4: Location */}
+        {/* Column 4: Location Map */}
         <div className="footer-column">
           <h3>Our Location</h3>
           <iframe
-            src="https://maps.google.com/maps?q=471%20Old%20Walnut%20Cir,%20Gurnee,%20IL%2060031&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=Plaza%20No%203,%20Block%20B1%20Ext,%20B-17%20Islamabad&t=&z=13&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="150"
             frameBorder="0"
@@ -60,7 +66,10 @@ function Footer() {
 
       {/* Bottom Footer */}
       <div className="footer-bottom">
-        <p>Cloud Services Webinar, Copyright © 2024-2025. All Rights Reserved. Designed & Developed by Asad</p>
+        <p>
+          © 2024-2025 The Cloud Services. All rights reserved. Developed by Asad. Visit: 
+          <a href="https://cloudservices.com.pk" target="_blank" rel="noopener noreferrer"> cloudservices.com.pk</a>
+        </p>
       </div>
     </footer>
   );
