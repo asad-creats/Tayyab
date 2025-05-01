@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import WebinarDetail from './pages/WebinarDetail';
 import AllWebinars from './pages/AllWebinars';
 import WebinarAdmin from './pages/WebinarAdmin'; // <-- new page
-import { WebinarContext } from './context/WebinarContext';
+import { WebinarContext, WebinarProvider } from './context/WebinarContext';
 
 import './index.css';
 
@@ -42,15 +42,16 @@ function HomePage() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/webinar/:id" element={<WebinarDetail />} />
-        <Route path="/webinars" element={<AllWebinars />} />
-        
-        <Route path="/admin/webinars" element={<WebinarAdmin />} />
-      </Routes>
-    </Router>
+    <WebinarProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/webinar/:id" element={<WebinarDetail />} />
+          <Route path="/webinars" element={<AllWebinars />} />
+          <Route path="/admin/webinars" element={<WebinarAdmin />} />
+        </Routes>
+      </Router>
+    </WebinarProvider>
   );
 }
 
